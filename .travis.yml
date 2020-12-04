@@ -1,0 +1,19 @@
+sudo: required
+dist: bionic
+language: generic
+
+before_install:
+  - sudo apt-get update -qq
+
+install:
+  - sudo apt-get install -qq g++
+  - g++ test-data/fileGenerator.cpp -o test-data/fileGenerator
+  - g++ src/fileSorter.cpp -o fileSorter
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+script:
+  - cd test-data
+  - fileGenerator TestDataFile 5242880
