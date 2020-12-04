@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/smk-robotics/FileSorter.svg?branch=master)](https://travis-ci.com/github/smk-robotics/FileSorter)
+
 # FileSorter
 External sorting for huge binary files.
  
