@@ -1,3 +1,8 @@
+# Ignore all binary files without extension (magic, motherfucker).
+*
+!/**/
+!*.*
+
 # Prerequisites
 *.d
 
@@ -30,3 +35,7 @@
 *.exe
 *.out
 *.app
+
+# Binary files
+*.bin
+*.dat
