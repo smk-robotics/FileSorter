@@ -16,4 +16,5 @@ notifications:
     on_failure: always
 script:
   - cd test-data
-  - fileGenerator TestDataFile 5242880
+  - ./fileGenerator TestDataFile 5242880
+  - ./fileSorter
