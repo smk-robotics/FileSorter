@@ -1,5 +1,5 @@
-#include "filegenerator.h"
 #include <iostream>
+#include "fileGenerator.h"
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[]) {
     if (argc < 2) {
