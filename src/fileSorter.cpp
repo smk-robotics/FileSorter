@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <memory>
 #include <set>
+#include <map>
 #include <unordered_map>
 #include <math.h>
 #include <string>
@@ -24,21 +25,22 @@ template <typename T>
 inline void writeDataToFile(const T &data, const std::string chunkFileName) noexcept {
   std::ofstream chunkFile(chunkFileName);
   for (const auto &element:data) {
-    chunkFile << element;
+          chunkFile << element;
   }
   chunkFile.close();
 }
 
-template <typename T>
-inline void deleteFiles(T &filesMap) {
-  for (auto i = 0; i <= filesMap.size() + 1; ++i) {
-    if (remove(filesMap.begin()->first.c_str()) == 0) {
-      filesMap.erase(filesMap.begin());
-    } else {
-      std::cerr << std::setw(80) << std::left <<
-      "[FileSorter] - Can't remove \"" + filesMap.begin()->first + "\" chunk:" << std::setw(10) << std::right <<
-                                                                                                "[ERROR]" << std::endl;
-    }
+template <>
+inline void writeDataToFile<std::string>(const std::string &data, const std::string chunkFileName) noexcept {
+  std::ofstream chunkFile(chunkFileName);
+  chunkFile << data;
+  chunkFile.close();
+}
+
+inline void deleteFile(const std::string &fileName) {
+  if (!remove(fileName.c_str()) == 0) {
+    std::cerr << std::setw(80) << std::left <<
+    "[FileSorter] - Can't remove \"" + fileName + "\" file:" << std::setw(10) << std::right << "[ERROR]" << std::endl;
   }
 }
 
@@ -74,45 +76,66 @@ std::unordered_map<std::string, unsigned long> splitFileToChunks(const std::stri
   return chunksList;
 }
 
-void mergeSortFromChunks(const std::unordered_map<std::string, unsigned long> &chunksList,
+void mergeSortFromChunks(std::unordered_map<std::string, unsigned long> &chunksList,
                          const std::string &sortedFileName) noexcept {
   std::ifstream resultFile(sortedFileName); // Open file to load result sorted data.
   char charBuffer[charBufferSize + 1];      // Buffer for readed data.
-  std::multiset<std::string> sortedData;    // Sorted part of data from all chunks.
-  unsigned long iterationIndex = 0;
-  for (const auto &chunk:chunksList) {
-    std::ifstream currentChunkFile(chunk.first);
-    currentChunkFile.seekg(chunk.second);
-    while (!currentChunkFile.eof()) {
-      currentChunkFile.read(charBuffer, charBufferSize);
-      sortedData.insert(charBuffer);
-    }
-    writeDataToFile(sortedData, sortedFileName);
-    currentChunkFile.close();
-    ++iterationIndex;
-  }
+  std::multimap<std::string, std::string> sortedData; // Sorted part of data from all chunks.
+  auto singleChunkDataCountLimit = chunkSizeLimit / chunksList.size();
+
+  // for (auto chunk = chunksList.begin(); chunk != chunksList.end(); ++chunk) {
+  //   std::ifstream currentChunkFile(chunk->first); // Open every chunk for read.
+  //   currentChunkFile.seekg(chunk->first);        // Go to last readed buffer position in chunk.
+  //   if (!currentChunkFile.eof()) {
+  //     currentChunkFile.read(charBuffer, charBufferSize);
+  //     sortedData.insert({charBuffer, chunk->second});
+  //     chunk->second += charBufferSize;
+  //   } else {
+  //     deleteFile(chunk->first);                  // Remove chunk file from system.
+  //     chunk = chunksList.erase(chunk);           // Remove chunk from list.
+  //   }
+  // }
+
+  // while (!chunksList.empty()) {             // Read data from chunks untill there is any chunks in list.
+  //   for (auto chunk = chunksList.begin(); chunk != chunksList.end(); ++chunk) {
+  //     std::ifstream currentChunkFile(chunk->first); // Open every chunk for read.
+  //     currentChunkFile.seekg(chunk->second);        // Go to last readed buffer position in chunk.
+  //     auto currentChunkDataCount = 0;               // Reset readed data counter.
+  //     sortedData.clear();
+  //     // Read data from the chunk until reach limit or end of file:
+  //     while (!currentChunkFile.eof() || currentChunkDataCount < singleChunkDataCountLimit) {
+  //       currentChunkFile.read(charBuffer, charBufferSize);
+  //       sortedData.insert(charBuffer);
+  //       chunk->second += charBufferSize;           // Update last readed buffer position in chunk.
+  //       ++currentChunkDataCount;
+  //     }
+  //     writeDataToFile(sortedData, sortedFileName); // Load sorted data to result file.
+  //     currentChunkFile.close();
+  //     if (currentChunkFile.eof()) {                // Check reach end of chunk file end.
+  //
+  //     }
+  //   }
+  // }
 }
 
 int main() {
-  std::string originFile = "test-data/TestDataFile";
+  std::string originDataFile = "test-data/TestDataFile";
+  std::string sortedDataFile = "sortedData";
   std::unordered_map<std::string, unsigned long> chunks;
-  chunks = splitFileToChunks(originFile);
-
-  if (chunks.empty()) {
-      return 0;
-  }
-  std::cout << std::setw(80) << std::left <<
-              "[FileSorter] - Splitting \"" + originFile + "\" file to chunks:" << std::setw(10) <<
+  std::multimap<std::string, std::pair<std::string, unsigned long>> superCunks;
+  chunks = splitFileToChunks(originDataFile);
+  if (!chunks.empty()) {
+    std::cout << std::setw(80) << std::left <<
+              "[FileSorter] - Splitting \"" + originDataFile + "\" file to chunks:" << std::setw(10) <<
                                                                               std::right << "[FINISHED]" << std::endl;
-  std::string sortedFileName = "sortedData";
-  mergeSortFromChunks(chunks, sortedFileName);
-  std::cout << std::setw(80) << std::left <<
-               "[FileSorter] - Merge sorting from " + std::to_string(chunks.size()) + " chunks:" << std::setw(10) <<
-                                                                              std::right << "[FINISHED]" << std::endl;
-  deleteFiles(chunks);
-  if (chunks.empty()) {
-  std::cout << std::setw(80) << std::left <<
-               "[FileSorter] - Deleting chunk files:" << std::setw(10) << std::right << "[FINISHED]" << std::endl;
+    mergeSortFromChunks(chunks, sortedDataFile);
+    std::cout << std::setw(80) << std::left <<
+             "[FileSorter] - Merge " + std::to_string(chunks.size()) + " chunks to \"" + sortedDataFile + "\" file:" <<
+                                                            std::setw(10) << std::right << "[FINISHED]" << std::endl;
+    if (chunks.empty()) {
+    std::cout << std::setw(80) << std::left <<
+              "[FileSorter] - Deleting all chunk files:" << std::setw(10) << std::right << "[FINISHED]" << std::endl;
+    }
   }
   return 0;
 }
