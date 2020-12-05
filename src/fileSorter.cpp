@@ -66,6 +66,16 @@ std::vector<std::string> splitFileToChunks(const std::string &fileName) noexcept
 // void mergeSortFromChunks(const std::vector<std::string> *chunksList, const std::string &sortedFileName) noexcept {
 void mergeSortFromChunks(const std::vector<std::string> *chunksList, const std::string &sortedFileName) noexcept {
   std::cout << "[FileSorter] - Merge sort from " << chunksList->size() << " chunks - [START]" << std::endl;
+  std::ifstream resultFile(sortedFileName); // Result file with sorted data.
+  char charBuffer[charBufferSize + 1];      // Buffer for readed data.
+  std::multiset<std::string> sortedData;    // Sorted part of data from all chunks.
+  for (const auto &chunk:chunksList) {
+    for (auto i = 0; i < (chunkSizeLimit / chunksList.size(); ++i) {
+      std::ifstream currentChunkFile(chunk);
+      currentChunkFile.read(charBuffer, sortedData);
+      sortedData.insert(charBuffer);
+    }
+  }
   std::cout << "[FileSorter] - Merge sort from chunks - [FINISHED]" << std::endl;
 }
 
