@@ -62,10 +62,9 @@ std::multimap<std::string, std::pair<std::string, unsigned long>> splitFileToChu
   std::ifstream originFile(fileName);       // Open given file to read data.
   auto currentChunkIndex = 0;               // Index of current chunk.
   if (originFile) {                         // Check that given file is exist and successfully opened.
-    while (!originFile.eof()) {
-      originFile.read(charBuffer, dataBufferSize);                       // Read data from file with unsorted data.
-      sortedDataSet.insert(charBuffer);                                  // Add data to sorted container.
-      if (sortedDataSet.size() >= chunkSizeLimit) {                      // Check sorted container size.
+    while (originFile.read(charBuffer, dataBufferSize)) { // Read data from file with unsorted data.
+      sortedDataSet.insert(charBuffer);                    // Add data to sorted container.
+      if (sortedDataSet.size() >= chunkSizeLimit) {        // Check sorted container size.
         currentChunkName = std::to_string(currentChunkIndex);
         // Store first element of sorted data, name of chunk, and number of readed bytes:
         chunksList.insert({*sortedDataSet.begin(), {currentChunkName, dataBufferSize}});
@@ -88,7 +87,7 @@ std::multimap<std::string, std::pair<std::string, unsigned long>> splitFileToChu
   return chunksList;
 }
 
-
+// Merge sorting algorithm. Get chunks with sorted parts of data and merge it in result file.
 void mergeSortFromChunks(std::multimap<std::string, std::pair<std::string, unsigned long>> &chunksList,
                          const std::string &sortedFileName) noexcept {
   std::cout << std::setw(80) << std::left <<
@@ -102,7 +101,7 @@ void mergeSortFromChunks(std::multimap<std::string, std::pair<std::string, unsig
       unsigned long currentElementPosition = chunksList.begin()->second.second;
       std::string currentChunkName = chunksList.begin()->second.first;
       std::ifstream currentChunkFile(chunksList.begin()->second.first); // Open chunk with previous smallest element.
-      currentChunkFile.seekg(chunksList.begin()->second.second);        // Set required position iN file.
+      currentChunkFile.seekg(chunksList.begin()->second.second);        // Set required position in file.
       chunksList.erase(chunksList.begin());                             // Remove smallest element from sorted set.
       if (currentChunkFile.read(charBuffer, dataBufferSize)) {          // Read new element from chunk and add it to set.
         chunksList.insert({charBuffer, {currentChunkName, currentElementPosition + dataBufferSize}});
@@ -117,13 +116,20 @@ void mergeSortFromChunks(std::multimap<std::string, std::pair<std::string, unsig
            "[FileSorter] - Merging chunks to file:" << std::setw(10) << std::right << "[FINISHED]" << std::endl;
 }
 
-int main() {
-  std::string originDataFile = "test-data/TestDataFile";
-  std::string sortedDataFile = "sortedData";
+int main(int argc, char *argv[]) {
+  if (argc < 2) {
+    std::cerr << "[FileSorter][ERROR]: Need to pass origin and result file names!" << std::endl;
+    return 1;
+  }
+  if (static_cast<std::string>(argv[1]) == "-h" || static_cast<std::string>(argv[1]) == "--help") {
+    std::cout << "[FileSorter] - Pass origin and result file names in command line arguments." << std::endl;
+    std::cout << "Example: fileSorter <UnsorteredDataFilename> <SortedDataFileName>" << std::endl;
+    return 0;
+  }
+  std::string originDataFile = argv[1];
+  std::string sortedDataFile = argv[2];
   std::multimap<std::string, std::pair<std::string, unsigned long>> chunks;
   chunks = splitFileToChunks(originDataFile);
-  if (!chunks.empty()) {
-    mergeSortFromChunks(chunks, sortedDataFile);
-  }
+  mergeSortFromChunks(chunks, sortedDataFile);
   return 0;
 }
