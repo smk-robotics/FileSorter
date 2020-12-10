@@ -16,4 +16,4 @@ notifications:
     on_failure: always
 script:
   - ./test-data/fileGenerator test-data/TestDataFile 5242880
-  - ./fileSorter
+  - ./fileSorter test-data/TestDataFile sortedData
