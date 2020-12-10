@@ -21,4 +21,5 @@ To run sorting algorithm: </br>
     **[WARNING]** Pass origin file (unsorted data) and result file (sorted data) names in command line arguments.
 
 ## 3. Use help.
-Need help? Just pass **-h** or **--help** as command line argument: `fileSorter -h` or `fileSorter --help`.
+Need help? </br>
+  - Pass **-h** or **--help** as command line argument: `fileSorter -h` or `fileSorter --help`.
