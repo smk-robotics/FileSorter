@@ -17,5 +17,8 @@ To run sorting algorithm: </br>
   - **Go to FileSorter project git directory.** 
   - **Compile file sorter:** </br>
     Simpliest way - use g++: `g++ src/fileSorter.cpp -o fileSorter`.
-  - **Run file sorter:** `fileSorter`. </br>
-    **[WARNING]** File sorter will try to find file with name "TestDataFile" in "test-data" folder and sort it.
+  - **Run file sorter:** `fileSorter <UnsorteredDataFile> <SorteredDataFile>`. </br>
+    **[WARNING]** Pass origin file (unsorted data) and result file (sorted data) names in command line arguments.
+
+## 3. Use help
+Need help? Just pass -h or --help as command line argument: `fileSorter -h` or `fileSorter --help`.
