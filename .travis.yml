@@ -11,7 +11,7 @@ install:
   - g++ test-data/fileGenerator.cpp -o test-data/fileGenerator
   - g++ test-data/fileGenerator.cpp -o test-data/fileGenerator
   - mkdir -p build && cd build
-  - cmake --build . --target all
+  - cmake .. && cmake --build . --target all
 
 notifications:
   email:

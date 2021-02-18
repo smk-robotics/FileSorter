@@ -60,15 +60,15 @@ include CMakeFiles/MultisetChunkTest.dir/flags.make
 CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.o: CMakeFiles/MultisetChunkTest.dir/flags.make
 CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.o: ../test/MultisetChunkTest.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.o -c /home/ksmirnov/local/Software_Patterns_Test/FileSorter/test/MultisetChunkTest.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.o -c /home/ksmirnov/local/Software_Patterns_Test/FileSorter/test/MultisetChunkTest.cpp
 
 CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ksmirnov/local/Software_Patterns_Test/FileSorter/test/MultisetChunkTest.cpp > CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ksmirnov/local/Software_Patterns_Test/FileSorter/test/MultisetChunkTest.cpp > CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.i
 
 CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ksmirnov/local/Software_Patterns_Test/FileSorter/test/MultisetChunkTest.cpp -o CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ksmirnov/local/Software_Patterns_Test/FileSorter/test/MultisetChunkTest.cpp -o CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.s
 
 CMakeFiles/MultisetChunkTest.dir/test/MultisetChunkTest.cpp.o.requires:
 

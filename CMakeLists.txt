@@ -18,7 +18,7 @@ file(GLOB CHUNK_LIBRARY_HEADERS CONFIGURE_DEPENDS src/${CHUNK_LIBRARY}/*.h)
 add_library(${CHUNK_LIBRARY} INTERFACE)
 
 target_include_directories(${CHUNK_LIBRARY} INTERFACE
-    ${CHUNK_LIBRARY_HEADERS}
+    src/${CHUNK_LIBRARY}
  )
 ####################################
 ## DATA_PROVIDER_LIBRARY ##
@@ -29,7 +29,7 @@ file(GLOB DATA_PROVIDER_LIBRARY_HEADERS CONFIGURE_DEPENDS src/${DATA_PROVIDER_LI
 add_library(${DATA_PROVIDER_LIBRARY} INTERFACE)
 
 target_include_directories(${DATA_PROVIDER_LIBRARY} INTERFACE
-    ${DATA_PROVIDER_LIBRARY}
+    src/${DATA_PROVIDER_LIBRARY}
  )
 ######################
 ## SPLITTER_LIBRARY ##

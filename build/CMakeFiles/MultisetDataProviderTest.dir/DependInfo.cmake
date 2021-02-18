@@ -11,9 +11,8 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../src"
-  "../src/Chunk/AbstractChunk.h"
-  "../src/Chunk/MultisetChunk.h"
-  "../DataProvider"
+  "../src/Chunk"
+  "../src/DataProvider"
   )
 
 # Targets to which this target links.

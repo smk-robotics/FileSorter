@@ -1,1 +1,0 @@
-/usr/bin/g++     CMakeFiles/MultisetChunkUnitTest.dir/test/MultisetChunkUnitTest.cpp.o  -o MultisetChunkUnitTest -Wl,-rpath,/home/ksmirnov/local/Software_Patterns_Test/FileSorter/third-party/out/lib ../third-party/out/lib/libgtest.so 
