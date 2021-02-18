@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/MultisetDataProviderTest.dir/test/MultisetDataProviderTest.cpp.o  -o MultisetDataProviderTest -Wl,-rpath,/home/ksmirnov/local/Software_Patterns_Test/FileSorter/third-party/out/lib ../third-party/out/lib/libgtest.so 
