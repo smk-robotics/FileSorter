@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="FileSorter"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MultisetDataProviderTest">
+				<Option output="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/MultisetDataProviderTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/src"/>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/src/Chunk/AbstractChunk.h"/>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/src/Chunk/MultisetChunk.h"/>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/DataProvider"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 MultisetDataProviderTest"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MultisetDataProviderTest/fast">
+				<Option output="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/MultisetDataProviderTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/src"/>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/src/Chunk/AbstractChunk.h"/>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/src/Chunk/MultisetChunk.h"/>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/DataProvider"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 MultisetDataProviderTest/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MultisetChunkTest">
+				<Option output="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/MultisetChunkTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/src"/>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/src/Chunk/AbstractChunk.h"/>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/src/Chunk/MultisetChunk.h"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 MultisetChunkTest"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="MultisetChunkTest/fast">
+				<Option output="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/MultisetChunkTest" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/src"/>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/src/Chunk/AbstractChunk.h"/>
+					<Add directory="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/src/Chunk/MultisetChunk.h"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 MultisetChunkTest/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/test/MultisetChunkTest.cpp">
+			<Option target="MultisetChunkTest"/>
+		</Unit>
+		<Unit filename="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/test/MultisetDataProviderTest.cpp">
+			<Option target="MultisetDataProviderTest"/>
+		</Unit>
+		<Unit filename="/home/ksmirnov/local/Software_Patterns_Test/FileSorter/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

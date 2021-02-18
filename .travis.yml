@@ -8,7 +8,10 @@ before_install:
 install:
   - sudo apt-get install -qq g++
   - g++ test-data/fileGenerator.cpp -o test-data/fileGenerator
+  - g++ test-data/fileGenerator.cpp -o test-data/fileGenerator
   - g++ src/fileSorter.cpp -o fileSorter
+  - mkdir -p build && cd build
+  - cmake --build . --target all
 
 notifications:
   email:
@@ -16,4 +19,5 @@ notifications:
     on_failure: always
 script:
   - ./test-data/fileGenerator test-data/TestDataFile 5242880
-  - ./fileSorter test-data/TestDataFile sortedData
+  - ./build/MultisetChunkTest
+  - ./build/MultisetDataProviderTest

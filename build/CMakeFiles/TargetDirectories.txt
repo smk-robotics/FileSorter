@@ -1,0 +1,4 @@
+/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/CMakeFiles/rebuild_cache.dir
+/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/CMakeFiles/edit_cache.dir
+/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/CMakeFiles/MultisetDataProviderTest.dir
+/home/ksmirnov/local/Software_Patterns_Test/FileSorter/build/CMakeFiles/MultisetChunkTest.dir

@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/Chunk/AbstractChunk.h
+string
+-
+iostream
+-
+fstream
+-
+
+../src/Chunk/MultisetChunk.h
+set
+-
+fstream
+-
+iostream
+-
+AbstractChunk.h
+../src/Chunk/AbstractChunk.h
+
+/home/ksmirnov/local/Software_Patterns_Test/FileSorter/test/MultisetChunkUnitTest.cpp
+gtest/gtest.h
+-
+string_view
+-
+experimental/filesystem
+-
+fstream
+-
+Chunk/MultisetChunk.h
+/home/ksmirnov/local/Software_Patterns_Test/FileSorter/test/Chunk/MultisetChunk.h
+
