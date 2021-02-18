@@ -10,7 +10,6 @@ install:
   - cd third-party && ./build_third_party.sh && cd -
   - g++ test-data/fileGenerator.cpp -o test-data/fileGenerator
   - g++ test-data/fileGenerator.cpp -o test-data/fileGenerator
-  - g++ src/fileSorter.cpp -o fileSorter
   - mkdir -p build && cd build
   - cmake --build . --target all
 
