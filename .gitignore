@@ -45,3 +45,8 @@
 
 # Build directory
 build/*
+
+# Third party build directory
+third-party/out/*
+
+.vscode
