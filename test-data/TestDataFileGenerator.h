@@ -6,8 +6,12 @@
 class FileGenerator {
 public:
     static void generateRandomTextFile(std::string fileName, uint64_t fileSize) {
-        std::ofstream myfile;
-        myfile.open(fileName.c_str());
+        std::ofstream dataFile;
+        dataFile.open(fileName.c_str());
+        if (!dataFile.good()) {
+            std::cerr << "[ERROR] - Can't open file \"" << fileName << "\". Exit creating test data file." << std::endl;
+            return;
+        }
         uint64_t totalSizeSoFar = 0;
         uint64_t wordSize = 0;
         char letter;
@@ -19,15 +23,15 @@ public:
             }
             for(uint64_t j = 0; j < wordSize; j++) {
                 letter = 'a' + rand()%26;
-                myfile << letter;
+                dataFile << letter;
             }
             totalSizeSoFar += wordSize;
             if(totalSizeSoFar + 1 < fileSize) {
-                myfile << ' ';
+                dataFile << ' ';
                 totalSizeSoFar++;
             }
         }
-        myfile.close();
+        dataFile.close();
     }
 };
 

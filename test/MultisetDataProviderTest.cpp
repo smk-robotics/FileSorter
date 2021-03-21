@@ -3,7 +3,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <gtest/gtest.h>
-#include "DataProvider/MultisetDataProvider.h"
+#include "MultisetDataProvider.h"
 
 class MultisetDataProviderTest : public ::testing::Test {
 public:

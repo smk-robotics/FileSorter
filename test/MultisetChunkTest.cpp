@@ -2,7 +2,7 @@
 #include <string_view>
 #include <experimental/filesystem>
 #include <fstream>
-#include "Chunk/MultisetChunk.h"
+#include "MultisetChunk.h"
 
 constexpr std::string_view defaultChunkName = "defaultChunkName";
 
