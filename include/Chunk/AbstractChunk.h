@@ -1,8 +1,3 @@
-#ifndef ABSTRACTCHUNK_H
-#define ABSTRACTCHUNK_H
-#include <string>
-#include <iostream>
-#include <fstream>
 /**
  * @file AbstractChunk.h
  * @author Smirnov Kirill <smk.robotics@gmail.com>
@@ -10,6 +5,12 @@
  * @details Base template class for any chunk. Specific сhunk class can inherit from that class and specify stl
  * container for stored data.
  */
+#include <iostream>
+#include <fstream>
+#include <string>
+
+#pragma once
+
 template<typename TElementType, template<class, class...> class TContainer, class... TContainerParameters>
 class AbstractChunk {
 public:
@@ -34,8 +35,8 @@ public:
     }
     /**
      * @brief deleteChunkFile
-     * @details Detele existing binary chunk file.
-     * @return True if sucessfully delete binary chunk file. False if something went wrong.
+     * @details Delete existing binary chunk file.
+     * @return True if successfully delete binary chunk file. False if something went wrong.
      */
     bool deleteChunkFile() const {
         if (mChunkFileName.empty()) {
@@ -51,7 +52,7 @@ public:
     }
     /**
      * @brief chunkFileName
-     * @return Current chunk filemame value.
+     * @return Current chunk filename value.
      */
     std::string chunkFileName() const noexcept { return mChunkFileName; }
     /**
@@ -65,15 +66,10 @@ public:
      * @details Pure virtual method that writes data to file. Need to be specified in child class with specific
      * container for data.
      * @param data[in] Given data that will write to binary chunk file.
-     * @return True in sucessfully write data to binary file. False if something gone wrong.
+     * @return True in successfully write data to binary file. False if something gone wrong.
      */
     virtual bool writeDataToChunkFile(const TContainer<TElementType> &data) const = 0;
 
 protected:
-    /**
-     * @brief Name for chunk. Also use as chunk's filename.
-     */
-    std::string mChunkFileName;
+    std::string mChunkFileName; /**< Name for chunk. Also use as chunk's filename. */
 };
-
-#endif // ABSTRACTCHUNK_H

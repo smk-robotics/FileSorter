@@ -3,11 +3,11 @@
 
 int main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[]) {
     if (argc < 2) {
-        std::cout << "No filename passed as the first argument. Exit program." << std::endl;
+        std::cerr << "[ERROR] - No filename passed as the first argument. Exit program." << std::endl;
         return 1;
     }
     if (argc < 3) {
-        std::cout << "No file size (in bytes) passed as the second argument. Exit program." << std::endl;
+        std::cerr << "[ERROR] - No file size (in bytes) passed as the second argument. Exit program." << std::endl;
         return 2;
     }
     std::string givenFilename {argv[1]};

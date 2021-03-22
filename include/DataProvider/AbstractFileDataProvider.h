@@ -1,8 +1,8 @@
-#ifndef ABSTRACTFILEDATAPROVIDER_H
-#define ABSTRACTFILEDATAPROVIDER_H
-#include <string>
-#include <fstream>
 #include <iostream>
+#include <fstream>
+#include <string>
+
+#pragma once
 
 template<typename TElementType, template<class, class...> class TConteinerType, class... TContainerParams>
 class AbstractFileDataProvider
@@ -17,12 +17,12 @@ public:
         mFileName = fileName;
     }
     long getFileSize() const {
-        if (!mFileName.empty()) {
+        if (mFileName.empty()) {
             throw std::invalid_argument("[ERROR][AbstractFileDataProvider] - Filename is empty!");
         }
         std::ifstream inputFile(mFileName);
         if (!inputFile) {
-            throw std::runtime_error("[ERROR][AbstractFileDataProvider] - Can't open " + mFileName + " file!");
+            throw std::runtime_error("[ERROR][AbstractFileDataProvider] - Can't open \"" + mFileName + "\" file!");
         }
         inputFile.seekg(0, inputFile.end);
         long fileSize = inputFile.tellg();
@@ -32,7 +32,7 @@ public:
     long currentCharacterPosition() const noexcept {
         return mCurrentCharacterPosition;
     }
-    void setCurrentCharacterPosition(long characterPosition) noexcept {
+    void setCurrentCharacterPosition(unsigned long characterPosition) {
         if (characterPosition <= mFileSize) {
             mCurrentCharacterPosition = characterPosition;
         } else {
@@ -45,9 +45,7 @@ public:
     virtual TConteinerType<TElementType> GetDataFromFile() = 0;
 protected:
     std::string mFileName;
-    long mFileSize;
-    long mDataCountLimit;
-    long mCurrentCharacterPosition;
+    unsigned long mFileSize;
+    unsigned long mDataCountLimit;
+    unsigned long mCurrentCharacterPosition;
 };
-
-#endif // ABSTRACTFILEDATAPROVIDER_H

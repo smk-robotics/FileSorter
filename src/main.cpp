@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
   }
   if (static_cast<std::string>(argv[1]) == "-h" || static_cast<std::string>(argv[1]) == "--help") {
     std::cout << "Pass origin and result file names in command line arguments." << std::endl;
-    std::cout << "Example: fileSorter <UnsorteredDataFilename> <SortedDataFileName>" << std::endl;
+    std::cout << "Example: fileSorter <UnsortedDataFilename> <SortedDataFileName>" << std::endl;
     return 0;
   }
   [[maybe_unused]] auto originDataFile = argv[1];

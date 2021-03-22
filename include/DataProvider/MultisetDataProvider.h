@@ -1,9 +1,8 @@
-#ifndef MULTISETDATAPROVIDER_H
-#define MULTISETDATAPROVIDER_H
 #include <set>
-#include <string>
 #include <stdexcept>
 #include "AbstractFileDataProvider.h"
+
+#pragma once
 
 template <typename TElementType> class MultisetDataProvider : public AbstractFileDataProvider<TElementType,
                                                                                               std::multiset>
@@ -37,5 +36,3 @@ public:
         return readedData;
     }
 };
-
-#endif // MULTISETDATAPROVIDER_H

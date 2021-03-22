@@ -8,20 +8,19 @@
 class MultisetDataProviderTest : public ::testing::Test {
 public:
     void SetUp() {
-        std::string mTestDataFilename = __FILE__;
+        mTestDataFilename = __FILE__;
         mTestDataFilename = mTestDataFilename.substr(0, mTestDataFilename.rfind("test"));
         mTestDataFilename += "test-data/TestDataFile";
         if (!std::fstream(mTestDataFilename.c_str())) {
             throw std::runtime_error("Error while opening test data file - " + mTestDataFilename);
         }
-        std::cout << "testDataFilename -> " << mTestDataFilename << std::endl;
     }
+protected:
     std::string mTestDataFilename;
 };
 
 TEST_F(MultisetDataProviderTest, MultisetDataProviderConstructorTest) {
-    std::cout << "testDataFilename -> " << mTestDataFilename << std::endl;
-//    MultisetDataProvider<uint32_t> multisetDataProvider(mTestDataFilename, 100);
+   MultisetDataProvider<uint32_t> multisetDataProvider(mTestDataFilename, 100);
 }
 
 int main(int argc, char *argv[]) {

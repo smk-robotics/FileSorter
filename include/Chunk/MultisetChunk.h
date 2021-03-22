@@ -1,9 +1,7 @@
-#ifndef CHUNK_H
-#define CHUNK_H
 #include <set>
-#include <fstream>
-#include <iostream>
 #include "AbstractChunk.h"
+
+#pragma once
 
 template <typename TElementType> class MultisetChunk : public AbstractChunk<TElementType, std::multiset> {
 public:
@@ -31,10 +29,7 @@ public:
         for (const auto &element : data) {
             outputFile << element;
         }
-        std::cout << "[INFO][CHUNK] - Write data to \"" << this->mChunkFileName << "\" file."  << std::endl;
         outputFile.close();
         return true;
     }
 };
-
-#endif // CHUNK_H

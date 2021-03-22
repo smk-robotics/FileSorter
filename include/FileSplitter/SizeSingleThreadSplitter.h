@@ -1,8 +1,8 @@
-#ifndef SIZESINGLETHREADSPLITTER_H
-#define SIZESINGLETHREADSPLITTER_H
-#include<vector>
+#include <vector>
 #include "AbstractFileSplitter.h"
 #include "Chunk/MultisetChunk.h"
+
+#pragma once
 
 template <class T> class SingleThreadBySizeSplitter : public AbstractFileSplitter<T> {
 public:
@@ -15,5 +15,3 @@ private:
      */
     uint32_t mChunkElementsNumberLimit;
 };
-
-#endif // SIZESINGLETHREADSPLITTER_H
