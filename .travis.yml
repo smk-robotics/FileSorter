@@ -4,6 +4,7 @@ language: cpp
 
 install:
   - cd third-party && ./build_third_party.sh && cd -
+  - ls third-party/out
   - mkdir -p build && cd build
   - cmake -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release .. 
   - cmake --build . --target all
@@ -11,11 +12,6 @@ script:
   - ./build/test/TestDataFileGenerator test-data/TestDataFile 5242880
   - export GTEST_COLOR=1 
   - ctest --output-on-failure
-artifacts:
-  # ⋮
-  paths:
-    - build
-    - third-party
 notifications:
   email:
     on_success: never
