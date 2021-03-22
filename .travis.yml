@@ -4,7 +4,7 @@ language: cpp
 
 install:
   - cd third-party && ./build_third_party.sh && cd -
-  - ls third-party/out
+  - ls third-party
   - mkdir -p build && cd build
   - cmake -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release .. 
   - cmake --build . --target all
