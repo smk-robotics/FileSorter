@@ -9,7 +9,7 @@ install:
   - cmake -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release .. 
   - cmake --build . --target all
 script:
-  - ./build/test/TestDataFileGenerator test-data/TestDataFile 5242880
+  - ./test/TestDataFileGenerator test-data/TestDataFile 5242880
   - export GTEST_COLOR=1 
   - ctest --output-on-failure
 notifications:
