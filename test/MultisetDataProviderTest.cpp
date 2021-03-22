@@ -19,8 +19,25 @@ protected:
     std::string mTestDataFilename;
 };
 
-TEST_F(MultisetDataProviderTest, MultisetDataProviderConstructorTest) {
+TEST_F(MultisetDataProviderTest, ConstructorTest) {
+    MultisetDataProvider<uint32_t> multisetDataProvider(mTestDataFilename, 100);
+    [[maybe_unused]] AbstractFileDataProvider<uint32_t, std::multiset> &dataProvider = multisetDataProvider;
+}
+
+TEST_F(MultisetDataProviderTest, BasicFunctionsTest) {
    MultisetDataProvider<uint32_t> multisetDataProvider(mTestDataFilename, 100);
+   EXPECT_EQ(multisetDataProvider.currentCharacterPosition(), 0);
+   EXPECT_EQ(multisetDataProvider.getFileSize(), 5242880);
+   EXPECT_EQ(multisetDataProvider.fileName(), mTestDataFilename);
+   EXPECT_EQ(multisetDataProvider.currentCharacterPosition(), 0);
+   EXPECT_EQ(multisetDataProvider.finish(), false);
+}
+
+TEST_F(MultisetDataProviderTest, DataReaderFunctionTest) {
+   MultisetDataProvider<uint32_t> multisetDataProvider(mTestDataFilename, 100);
+   std::multiset<uint32_t> data;
+   EXPECT_NO_THROW(data = multisetDataProvider.GetDataFromFile());
+   EXPECT_EQ(data.size(), 100);
 }
 
 int main(int argc, char *argv[]) {

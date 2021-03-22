@@ -27,7 +27,7 @@ public:
         inputFile.seekg(this->mCurrentCharacterPosition);   // Setup symbol position in input stream.
         char charBuffer[sizeof(TElementType) + 1]; // Additional symbol (+1) for end of row symbol.
         std::multiset<TElementType> readedData;
-        while (readedData.size() <= this->mDataCountLimit || inputFile.eof()) {
+        while (readedData.size() < this->mDataCountLimit || inputFile.eof()) {
             inputFile.read(charBuffer, sizeof(TElementType));
             readedData.insert(static_cast<TElementType>(*charBuffer));
             this->setCurrentCharacterPosition(inputFile.tellg());
