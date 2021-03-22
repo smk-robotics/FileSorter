@@ -1,4 +1,4 @@
-set(GTEST_ROOT ${CMAKE_SOURCE_DIR}/third-party/out/lib)
+set(GTEST_ROOT ${PROJECT_SOURCE_DIR}/../third-party/out/lib))
 
 find_package(GTest REQUIRED)
 
