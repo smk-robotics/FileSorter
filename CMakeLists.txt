@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(FileSorter VERSION 1.0.0)
+project(FileSorter LANGUAGES CXX VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 17)
 add_compile_options(-Wall)
 
