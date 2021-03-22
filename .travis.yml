@@ -1,17 +1,17 @@
 sudo: required
 dist: bionic
-language: generic
+language: cpp
 
 install:
   - cd third-party && ./build_third_party.sh && cd -
   - mkdir -p build && cd build
-  - cmake -DBUILD_TESTS=ON .. 
+  - cmake -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Release .. 
   - cmake --build . --target all
-
+script:
+  - ./build/test/TestDataFileGenerator test-data/TestDataFile 5242880
+  - export GTEST_COLOR=1 
+  - ctest --output-on-failure
 notifications:
   email:
     on_success: never
     on_failure: always
-script:
-  - ./build/test/TestDataFileGenerator test-data/TestDataFile 5242880
-  - GTEST_COLOR=1 ctest --output-on-failure
