@@ -1,4 +1,6 @@
-set(GTEST_ROOT ${PROJECT_SOURCE_DIR}/../third-party/out/lib))
+set(GTEST_DIR ${PROJECT_SOURCE_DIR}/third-party/out/lib)
+set(GTEST_ROOT ${PROJECT_SOURCE_DIR}/third-party/out/lib)
+set(GTEST_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/third-party/out/include)
 
 find_package(GTest REQUIRED)
 
