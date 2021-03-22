@@ -19,12 +19,22 @@ target_link_libraries(MultisetChunkTest
 
 add_executable(MultisetDataProviderTest
     MultisetDataProviderTest.cpp
-    ${CHUNK_UNIT_TEST_HEADERS}
 )
 
 target_link_libraries(MultisetDataProviderTest
     Chunk
     DataProvider
+    ${GTEST_LIBRARIES}
+)
+
+add_executable(FileSplitterTest
+    FileSplitterTest.cpp
+)
+
+target_link_libraries(FileSplitterTest
+    Chunk
+    DataProvider
+    FileSplitter
     ${GTEST_LIBRARIES}
 )
 

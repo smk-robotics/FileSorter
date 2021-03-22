@@ -1,17 +1,16 @@
 cmake_minimum_required(VERSION 3.10.0)
 project(FileSorter LANGUAGES CXX VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 17)
-add_compile_options(-Wall)
+add_compile_options(-Werror)
 
-set(FILE_SPLITTER_LIBRARY "FileSplitter")
 #####################
 ### CHUNK_LIBRARY ###
 #####################
 add_library(Chunk INTERFACE)
 
 target_include_directories(Chunk INTERFACE
-    include/Chunk
- )
+  include/Chunk
+)
 #############################
 ### DATA_PROVIDER_LIBRARY ###
 #############################
@@ -23,17 +22,15 @@ target_include_directories(DataProvider INTERFACE
 ######################
 ## SPLITTER_LIBRARY ##
 ######################
+add_library(FileSplitter INTERFACE)
 
-#add_library(${FILE_SPLITTER_LIBRARY} SHARED
-#    ${FILE_SPLITTER_LIBRARY_SOURCES}
-#    ${FILE_SPLITTER_LIBRARY_HEADERS}
-#)
+target_include_directories(FileSplitter INTERFACE
+  include/FileSplitter
+)
 
-#target_link_libraries(${FILE_SPLITTER_LIBRARY}
-#    ${CHUNK_LIBRARY}
-#    ${MULTISET_DATA_PROVIDER_LIBRARY}
-#)
-
+target_link_libraries(FileSplitter INTERFACE
+   Chunk
+)
 ################
 ## MAIN_BUILD ##
 ################

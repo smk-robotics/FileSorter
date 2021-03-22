@@ -1,10 +1,45 @@
+/**
+ * @file AbstractFileSplitter.h
+ * @author Smirnov Kirill <smk.robotics@gmail.com>
+ * @brief AbstractFileSplitter class.
+ * @details Base template class for object that split file with data to smaller files (chunks).
+ */
 #include <string>
-#include "Chunk/Chunk.h"
+#include "MultisetChunk.h"
 
 #pragma once
-
+/**
+ * @brief AbstractFileSplitter class.
+ * @details Split file with data to smaller files (chunks) and make lists of it.
+ * @tparam T Data type stored in file. 
+ */
 template <class T> class AbstractFileSplitter {
 public:
-    virtual std::vector<Chunk<T>> splitFileToChunks(const std::string &originFileName) = 0;
+    /**
+     * @brief splitFileToChunks function.
+     * @param[in] originFileName Name of file with data. 
+     * @return std::vector<Chunk<T>> Custom object with data obtained from given file.
+     */
+    virtual std::vector<T> splitFileToChunks(const std::string &originFileName) = 0;
+    /**
+     * @brief Virtual Abstract File Splitter object destructor.
+     */
     virtual ~AbstractFileSplitter() = default;
+    /**
+     * @brief fileValid function.
+     * @param[in] filename Name of file that need to be check. 
+     * @return true If file exists and accessible.
+     * @return false If filename is empty or file not exist or valid.
+     */
+    bool fileValid(const std::string &filename) const noexcept {
+        if (filename.empty()) {
+            std::cerr << "[ERROR][AbstractFileSplitter] - Filename is empty." << std::endl;
+            return false;
+        }
+        std::ofstream outputFile(filename);
+        if (!outputFile) {
+            std::cerr << "[ERROR][AbstractFileSplitter] - Can't open \"" << filename << "\"." << std::endl;
+            return false;
+        }
+    }
 };
