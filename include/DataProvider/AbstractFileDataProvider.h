@@ -15,13 +15,9 @@
  * @tparam TContainerType Container type (one of STL) for container with data obtained from file.
  * @tparam TContainerParams Container parameters (std::allocator, etc.) for container with data obtained from file.
  */
-template<typename TElementType, template<class, class...> class TContainerType, class... TContainerParams>
+template <typename TElementType, template <class, class ...> class TContainerType, class ... TContainerParams>
 class AbstractFileDataProvider {
 public:
-    /**
-     * @brief Default Abstract File Data Provider object constructor.
-     */
-    AbstractFileDataProvider() = default;
     /**
      * @brief Virtual Abstract File Data Provider object destructor.
      */

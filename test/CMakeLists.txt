@@ -48,3 +48,4 @@ add_executable(TestDataFileGenerator
 
 gtest_discover_tests(MultisetChunkTest)
 gtest_discover_tests(MultisetDataProviderTest)
+gtest_discover_tests(FileSplitterTest)

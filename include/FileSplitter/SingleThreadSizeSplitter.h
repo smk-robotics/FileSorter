@@ -1,3 +1,9 @@
+/**
+ * @file SingleThreadSizeSplitter.h
+ * @author Smirnov Kirill <smk.robotics@gmail.com>
+ * @brief SingleThreadSizeSplitter class.
+ * @details Class for object that splits file to multiset chunks with any given type.
+ */
 #include <fstream>
 #include <vector>
 #include "AbstractFileSplitter.h"
@@ -6,21 +12,22 @@
 
 #pragma once
 
-template <class T> class SingleThreadSizeSplitter : public AbstractFileSplitter<T> {
+template <typename TElementType> 
+class SingleThreadSizeSplitter : public AbstractFileSplitter<MultisetChunk<TElementType>> {
 public:
     explicit SingleThreadSizeSplitter(const uint16_t chunkSizeMb) 
-        : mChunkElementsNumberLimit(1000 * 1000 * chunkSizeMb / sizeof(T)) {};
-    std::vector<T> splitFileToChunks(const std::string &filename) override {
+        : mChunkElementsNumberLimit(1000 * 1000 * chunkSizeMb / sizeof(TElementType)) {};
+    std::vector<MultisetChunk<TElementType>> splitFileToChunks(const std::string &filename) override {
         if (!this->fileValid(filename)) {
-            return {};
+            throw std::runtime_error("[ERROR][SingleThreadSizeSplitter] - Filename not valid!");
         }
-        std::fstream dataFile("filename");
-        std::vector<T> chunks;
-        MultisetDataProvider multisetDataProvider(filename, mChunkElementsNumberLimit);
-        auto currentChunkIndex = 0; // Index of current chunk.
+        std::vector<MultisetChunk<TElementType>> chunks;
+        MultisetDataProvider<TElementType> multisetDataProvider(filename, mChunkElementsNumberLimit);
+        auto currentChunkIndex = 0; /**< Index of current chunk. */
         while (multisetDataProvider.finish()) {
-            T currenChunk(std::to_string(currentChunkIndex), multisetDataProvider.GetDataFromFile());
-            chunks.push_back(currenChunk);
+            chunks.push_back(MultisetChunk<TElementType>(std::to_string(currentChunkIndex), 
+                                                                        multisetDataProvider.GetDataFromFile()));
+            currentChunkIndex += 1;
         }
         return chunks;
     };

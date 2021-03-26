@@ -13,14 +13,14 @@
  * @details Split file with data to smaller files (chunks) and make lists of it.
  * @tparam T Data type stored in file. 
  */
-template <class T> class AbstractFileSplitter {
+template <class TChunkType> class AbstractFileSplitter {
 public:
     /**
      * @brief splitFileToChunks function.
      * @param[in] originFileName Name of file with data. 
      * @return std::vector<Chunk<T>> Custom object with data obtained from given file.
      */
-    virtual std::vector<T> splitFileToChunks(const std::string &originFileName) = 0;
+    virtual std::vector<TChunkType> splitFileToChunks(const std::string &originFileName) = 0;
     /**
      * @brief Virtual Abstract File Splitter object destructor.
      */
@@ -36,10 +36,10 @@ public:
             std::cerr << "[ERROR][AbstractFileSplitter] - Filename is empty." << std::endl;
             return false;
         }
-        std::ofstream outputFile(filename);
-        if (!outputFile) {
+        if (!std::ifstream(filename)) {
             std::cerr << "[ERROR][AbstractFileSplitter] - Can't open \"" << filename << "\"." << std::endl;
             return false;
         }
+        return true;
     }
 };
