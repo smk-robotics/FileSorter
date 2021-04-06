@@ -17,9 +17,26 @@ protected:
 
 TEST_F(FileSplitterTest, BasicConstructorTest) {
     SingleThreadSizeSplitter<uint32_t> fileSplitter(1);
+}
+
+TEST_F(FileSplitterTest, SplitFileTo1MbTest) {
+    SingleThreadSizeSplitter<uint32_t> fileSplitter(2);
     std::vector<MultisetChunk<uint32_t>> chunks;
     EXPECT_NO_THROW(chunks = fileSplitter.splitFileToChunks(mTestDataFilename));
-    // EXPECT_EQ(chunks.size(), 5);
+    EXPECT_EQ(chunks.size(), 3);
+    for (const auto &chunk : chunks) {
+        EXPECT_NO_THROW(chunk.deleteChunkFile());
+    }
+}
+
+TEST_F(FileSplitterTest, SplitFileTo6MbTest) {
+    SingleThreadSizeSplitter<uint32_t> fileSplitter(6);
+    std::vector<MultisetChunk<uint32_t>> chunks;
+    EXPECT_NO_THROW(chunks = fileSplitter.splitFileToChunks(mTestDataFilename));
+    EXPECT_EQ(chunks.size(), 1);
+    for (const auto &chunk : chunks) {
+        EXPECT_NO_THROW(chunk.deleteChunkFile());
+    }
 }
 
 int main(int argc, char *argv[]) {

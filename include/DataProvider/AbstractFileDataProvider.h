@@ -57,7 +57,7 @@ public:
      * @brief setCurrentCharacterPosition function.
      * @param[in] characterPosition Desirable character position in file with data. 
      */
-    void setCurrentCharacterPosition(unsigned long characterPosition) {
+    void setCurrentCharacterPosition(const unsigned long &characterPosition) {
         if (characterPosition <= mFileSize) {
             mCurrentCharacterPosition = characterPosition;
         } else {
@@ -70,7 +70,7 @@ public:
      * @return false If current character position not equal last character position in file with data..
      */
     bool finish() {
-        return mCurrentCharacterPosition >= mFileSize ? true : false;
+        return mCurrentCharacterPosition >= mFileSize;
     }
     /**
      * @brief GetDataFromFile function.

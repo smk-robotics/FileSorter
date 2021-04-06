@@ -24,7 +24,7 @@ public:
         std::vector<MultisetChunk<TElementType>> chunks;
         MultisetDataProvider<TElementType> multisetDataProvider(filename, mChunkElementsNumberLimit);
         auto currentChunkIndex = 0; /**< Index of current chunk. */
-        while (multisetDataProvider.finish()) {
+        while (!multisetDataProvider.finish()) {
             chunks.push_back(MultisetChunk<TElementType>(std::to_string(currentChunkIndex), 
                                                                         multisetDataProvider.GetDataFromFile()));
             currentChunkIndex += 1;

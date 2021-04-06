@@ -47,13 +47,19 @@ public:
         if (!inputFile) {
             throw std::runtime_error("[MultisetDataProvider] - Can't open " + this->mFileName + " file!");
         }
-        inputFile.seekg(this->mCurrentCharacterPosition);   // Setup symbol position in input stream.
-        char charBuffer[sizeof(TElementType) + 1]; // Additional symbol (+1) for end of row symbol.
+        inputFile.seekg(this->mCurrentCharacterPosition); // Setup symbol position in input stream.
+        char charBuffer[sizeof(TElementType) + 1];        // Additional symbol (+1) for end of row symbol.
         std::multiset<TElementType> readedData;
-        while (readedData.size() < this->mDataCountLimit || inputFile.eof()) {
+        auto currentCharacterPosition = inputFile.tellg();
+        while (readedData.size() < this->mDataCountLimit) {
             inputFile.read(charBuffer, sizeof(TElementType));
             readedData.insert(static_cast<TElementType>(*charBuffer));
-            this->setCurrentCharacterPosition(inputFile.tellg());
+            currentCharacterPosition = inputFile.tellg();
+            if (currentCharacterPosition < 0) {
+                break; // tellg function return -1 if reached end of file (eof).
+            } else {
+                this->setCurrentCharacterPosition(currentCharacterPosition);
+            }
         }
         inputFile.close();
         return readedData;
