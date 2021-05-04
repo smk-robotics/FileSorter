@@ -4,10 +4,12 @@
  * @brief AbstractFileSplitter class.
  * @details Base template class for object that split file with data to smaller files (chunks).
  */
-#include <string>
-#include "MultisetChunk.h"
-
 #pragma once
+
+#include "Chunk.h"
+
+namespace fle_srtr {
+
 /**
  * @brief AbstractFileSplitter class.
  * @details Split file with data to smaller files (chunks) and make lists of it.
@@ -43,3 +45,5 @@ public:
         return true;
     }
 };
+
+} // fle_srtr namespace.

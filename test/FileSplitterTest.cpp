@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include "SingleThreadSizeSplitter.h"
 
+using namespace fle_srtr;
+
 class FileSplitterTest : public ::testing::Test {
 public:
     void SetUp() {
@@ -21,7 +23,7 @@ TEST_F(FileSplitterTest, BasicConstructorTest) {
 
 TEST_F(FileSplitterTest, SplitFileTo1MbTest) {
     SingleThreadSizeSplitter<uint32_t> fileSplitter(2);
-    std::vector<MultisetChunk<uint32_t>> chunks;
+    std::vector<Chunk> chunks;
     EXPECT_NO_THROW(chunks = fileSplitter.splitFileToChunks(mTestDataFilename));
     EXPECT_EQ(chunks.size(), 3);
     for (const auto &chunk : chunks) {
@@ -31,7 +33,7 @@ TEST_F(FileSplitterTest, SplitFileTo1MbTest) {
 
 TEST_F(FileSplitterTest, SplitFileTo6MbTest) {
     SingleThreadSizeSplitter<uint32_t> fileSplitter(6);
-    std::vector<MultisetChunk<uint32_t>> chunks;
+    std::vector<Chunk> chunks;
     EXPECT_NO_THROW(chunks = fileSplitter.splitFileToChunks(mTestDataFilename));
     EXPECT_EQ(chunks.size(), 1);
     for (const auto &chunk : chunks) {

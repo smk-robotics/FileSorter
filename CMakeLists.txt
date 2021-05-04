@@ -1,8 +1,15 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(FileSorter LANGUAGES CXX VERSION 1.0.0)
+project(FileSorter LANGUAGES CXX VERSION 2.0.0)
 set(CMAKE_CXX_STANDARD 17)
-add_compile_options(-Werror)
+add_compile_options(-Werror -Wall -Wextra -Wpedantic)
+#################
+## DATA_WRITER ##
+#################
+add_library(DataWriter INTERFACE)
 
+target_include_directories(DataWriter INTERFACE
+  include/DataWriter
+)
 #####################
 ### CHUNK_LIBRARY ###
 #####################
@@ -10,6 +17,10 @@ add_library(Chunk INTERFACE)
 
 target_include_directories(Chunk INTERFACE
   include/Chunk
+)
+
+target_link_libraries(Chunk INTERFACE
+  DataWriter
 )
 #############################
 ### DATA_PROVIDER_LIBRARY ###

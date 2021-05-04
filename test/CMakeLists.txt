@@ -8,11 +8,11 @@ find_package(GTest REQUIRED)
 # Checking, that used our gtest library (from third-party).
 message("${PROJECT_NAME} - GTest library found -> ${GTEST_LIBRARIES}")
 
-add_executable(MultisetChunkTest
-    MultisetChunkTest.cpp
+add_executable(ChunkTest
+    ChunkTest.cpp
 )
 
-target_link_libraries(MultisetChunkTest
+target_link_libraries(ChunkTest
     Chunk
     ${GTEST_LIBRARIES}
 )
@@ -38,6 +38,15 @@ target_link_libraries(FileSplitterTest
     ${GTEST_LIBRARIES}
 )
 
+add_executable(DataWriterTest
+    DataWriterTest.cpp
+)
+
+target_link_libraries(DataWriterTest
+    DataWriter
+    ${GTEST_LIBRARIES}
+)
+
 ################################
 ### TEST_DATA_FILE_GENERATOR ###
 ################################
@@ -46,6 +55,7 @@ add_executable(TestDataFileGenerator
   ../test-data/TestDataFileGenerator.h
 )
 
-gtest_discover_tests(MultisetChunkTest)
-gtest_discover_tests(MultisetDataProviderTest)
-gtest_discover_tests(FileSplitterTest)
+gtest_discover_tests(DataWriterTest)
+# gtest_discover_tests(MultisetChunkTest)
+# gtest_discover_tests(MultisetDataProviderTest)
+# gtest_discover_tests(FileSplitterTest)
