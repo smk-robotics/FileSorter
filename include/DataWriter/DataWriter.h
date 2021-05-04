@@ -1,9 +1,12 @@
 #pragma once 
 
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <typeindex>
+#include <set>
 #include <string>
+#include <vector>
 
 namespace fle_srtr {
 

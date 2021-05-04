@@ -20,8 +20,7 @@ public:
      * @brief Constructor for new Chunk object.
      * @param[in] filename Name of chunk. Also use as filename for binary file with data from given container. 
      */
-    Chunk(const std::string &filename)
-    : mChunkFileName(filename) {}
+    Chunk(const std::string &filename);
     /**
      * @brief Constructor for new Chunk object.
      * @tparam TContainerType Type of container with data (vector, set, multiset, etc.).
@@ -30,7 +29,7 @@ public:
      * @param[in] data Container with data that will be stored in chunk binary file.
      */
     template<template<class ...> class TContainerType, class TElementType> 
-    Chunk(const std::string &filename, [[maybe_unused]] const TContainerType<TElementType> &data) 
+    Chunk(const std::string &filename, const TContainerType<TElementType> &data) 
     : mChunkFileName(filename) {
         writeDataToChunkFile(data);
     }
@@ -42,47 +41,24 @@ public:
      * @brief createChunkFile function.
      * @details Creates binary chunk file.
      */
-    void createChunkFile() const {
-        if (mChunkFileName.empty()) {
-            std::cerr << "[ERROR][Chunk] - Skip creating chunk file. Filename is empty." << std::endl;
-            return;
-        }
-        std::ofstream chunkFile(mChunkFileName);
-        if (chunkFile.good()) {
-            chunkFile.close();
-        } else {
-            std::cerr << "[ERROR][Chunk] - Can't create \"" << mChunkFileName << "\" chunk file." << std::endl;
-        }
-        return;
-    }
+    void createChunkFile() const;
     /**
      * @brief deleteChunkFile function.
      * @details Delete existing binary chunk file.
      * @return True if successfully delete binary chunk file. False if something went wrong.
      */
-    bool deleteChunkFile() const {
-        if (mChunkFileName.empty()) {
-            std::cerr << "[ERROR][Chunk] - Skip deleting chunk file. Filename is empty." << std::endl;
-            return false;
-        }
-        if (std::remove(mChunkFileName.c_str()) == 0) {
-            return true;
-        } else {
-            std::cerr << "[ERROR][Chunk] - Can't delete \"" << mChunkFileName << "\" chunk file." << std::endl;
-            return false;
-        }
-    }
+    bool deleteChunkFile() const;
     /**
      * @brief chunkFileName function.
      * @return Current chunk filename value.
      */
-    std::string chunkFileName() const noexcept { return mChunkFileName; }
+    std::string chunkFileName() const noexcept;
     /**
      * @brief setChunkFileName function.
      * @details Setter for chunk filename value. Don't rename existing chunkfile.
      * @param[in] chunkFileName Given name for chunk file.
      */
-    void setChunkFileName(const std::string &chunkFileName) noexcept { mChunkFileName = chunkFileName; }
+    void setChunkFileName(const std::string &chunkFileName) noexcept;
     /**
      * @brief writeDataToChunkFile function.
      * @details Create binary file and write given data to it.
