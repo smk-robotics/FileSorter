@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "SingleThreadSizeSplitter.h"
 
-using namespace fle_srtr;
+using namespace file_sorter;
 
 class FileSplitterTest : public ::testing::Test {
 public:
@@ -25,7 +25,7 @@ TEST_F(FileSplitterTest, SplitFileTo1MbTest) {
     SingleThreadSizeSplitter<uint32_t> fileSplitter(2);
     std::vector<Chunk> chunks;
     EXPECT_NO_THROW(chunks = fileSplitter.splitFileToChunks(mTestDataFilename));
-    EXPECT_EQ(chunks.size(), 3);
+    EXPECT_EQ(chunks.size(), static_cast<size_t>(3));
     for (const auto &chunk : chunks) {
         EXPECT_NO_THROW(chunk.deleteChunkFile());
     }
@@ -35,7 +35,7 @@ TEST_F(FileSplitterTest, SplitFileTo6MbTest) {
     SingleThreadSizeSplitter<uint32_t> fileSplitter(6);
     std::vector<Chunk> chunks;
     EXPECT_NO_THROW(chunks = fileSplitter.splitFileToChunks(mTestDataFilename));
-    EXPECT_EQ(chunks.size(), 1);
+    EXPECT_EQ(chunks.size(), static_cast<size_t>(1));
     for (const auto &chunk : chunks) {
         EXPECT_NO_THROW(chunk.deleteChunkFile());
     }

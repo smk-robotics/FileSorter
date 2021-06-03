@@ -6,7 +6,7 @@
 
 constexpr std::string_view defaultChunkName = "defaultChunkName";
 
-using namespace fle_srtr;
+using namespace file_sorter;
 
 TEST(ChunkUnitTest, ConstructorTest) {
     Chunk chunk(static_cast<std::string>(defaultChunkName));

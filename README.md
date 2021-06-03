@@ -2,24 +2,38 @@
 
 # FileSorter
 External sorting for huge binary files.
- 
-## 1. Generate file with unsorted data for testing.
-To generate file with usorted test data:
-  - **Go to "test-data" folder.**
-  - **Compile test data file generator:** </br>
-    Simpliest way - use g++: `g++ fileGenerator.cpp -o fileGenerator`
-  - **Run test data file generator:**</br> 
-    Pass ***file name*** and ***file size in bytes*** in command line arguments: `fileGenerator {fileName} {fileSize}`. </br>
-    For example to generate test data file with "TestDataFile" name and 1 Kb size run: `fileGenerator TestDataFile 1048576`
-  
-## 2. Run sorting algorithm.
-To run sorting algorithm: </br>
-  - **Go to FileSorter project git directory.** 
-  - **Compile file sorter:** </br>
-    Simpliest way - use g++: `g++ src/fileSorter.cpp -o fileSorter`.
-  - **Run file sorter:** `fileSorter <UnsorteredDataFile> <SorteredDataFile>`. </br>
-    **[WARNING]** Pass origin file (unsorted data) and result file (sorted data) names in command line arguments.
+____
 
-## 3. Use help.
-Need help? </br>
-  - Pass **-h** or **--help** as command line argument: `fileSorter -h` or `fileSorter --help`.
+## Building library
+  For separate library build just run:
+
+  `cmake -DCMAKE_BUILD_TYPE=Release ..`
+
+  `cmake --build . --target all`
+
+____
+## Building library with tests
+
+1. Before build library with tests, build third-party gtest/gmock libraries first:
+
+    ```cd third-party && ./build_third_party.sh```
+
+2. Building library with test using cmake:
+
+    `cmake -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=DEBUG ..`
+
+    `cmake --build . --target all`
+
+3. Generate data for tests:
+
+    `./test/TestDataFileGenerator test-data/TestDataFile 5242880`
+
+4. Run tests using ctest:
+
+    `export GTEST_COLOR=1 && ctest --output-on-failure`
+
+____
+
+## License
+
+  This software distributes under Creative Commons License.

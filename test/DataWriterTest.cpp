@@ -6,7 +6,7 @@
 
 class DataWriterTest : public ::testing::Test {
 protected:
-    fle_srtr::DataWriter mDataWriter;    
+    file_sorter::DataWriter mDataWriter;
 };
 
 TEST_F(DataWriterTest, BasicConstructorTest) {

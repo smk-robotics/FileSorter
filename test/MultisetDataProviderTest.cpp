@@ -25,7 +25,7 @@ TEST_F(MultisetDataProviderTest, ConstructorTest) {
 }
 
 TEST_F(MultisetDataProviderTest, BasicFunctionsTest) {
-   MultisetDataProvider<uint32_t> multisetDataProvider(mTestDataFilename, 100);
+   MultisetDataProvider<uint32_t> multisetDataProvider(mTestDataFilename, static_cast<uint32_t>(100));
    EXPECT_EQ(multisetDataProvider.currentCharacterPosition(), 0);
    EXPECT_EQ(multisetDataProvider.getFileSize(), 5242880);
    EXPECT_EQ(multisetDataProvider.fileName(), mTestDataFilename);
@@ -34,10 +34,10 @@ TEST_F(MultisetDataProviderTest, BasicFunctionsTest) {
 }
 
 TEST_F(MultisetDataProviderTest, DataReaderFunctionTest) {
-   MultisetDataProvider<uint32_t> multisetDataProvider(mTestDataFilename, 1000);
+   MultisetDataProvider<uint32_t> multisetDataProvider(mTestDataFilename, static_cast<uint32_t>(1000));
    std::multiset<uint32_t> data;
    EXPECT_NO_THROW(data = multisetDataProvider.GetDataFromFile());
-   EXPECT_EQ(data.size(), 1000);
+   EXPECT_EQ(data.size(), static_cast<size_t>(1000));
    EXPECT_FALSE(multisetDataProvider.finish());
    while (!multisetDataProvider.finish()) {
        EXPECT_NO_THROW(data = multisetDataProvider.GetDataFromFile());

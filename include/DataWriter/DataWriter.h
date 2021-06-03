@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 
 #include <algorithm>
 #include <fstream>
@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-namespace fle_srtr {
+namespace file_sorter {
 
 class DataWriter {
 public:
@@ -28,22 +28,22 @@ public:
         return mValidElementType(data) ? mWriteDataToFile(filename, data) : false;
     }
     template<typename T> bool writeDataToFile(const std::string &filename, const std::multiset<T> &data) {
-        return mValidElementType(data) ? mWriteDataToFile(filename, data) : false;   
+        return mValidElementType(data) ? mWriteDataToFile(filename, data) : false;
     }
 private:
-    template<template<class ...> class TContainerType, class TElementType> 
+    template<template<class ...> class TContainerType, class TElementType>
     bool mWriteDataToFile(const std::string &filename, const TContainerType<TElementType> &data) {
         if (data.empty()) {
-            std::cerr << "[ERROR][DataWriter] - Data is empty. Skip writting data to file.\n";
+            std::cerr << "[ERROR]:[DataWriter] - Data is empty. Skip writting data to file.\n";
             return false;
         }
         if (filename.empty()) {
-            std::cerr << "[ERROR][DataWriter] - Filename is empty. Skip writting data to file.\n";
+            std::cerr << "[ERROR]:[DataWriter] - Filename is empty. Skip writting data to file.\n";
             return false;
         }
         std::ofstream outputFile(filename);
         if (!outputFile) {
-            std::cerr << "[ERROR][DataWriter] - Can't open \"" << filename << "\" file. Skip writting data to file.\n";
+            std::cerr << "[ERROR]:[DataWriter] - Can't open \"" << filename << "\" file. Skip writting data to file.\n";
             return false;
         }
         for (const auto &element : data) {
@@ -53,15 +53,16 @@ private:
         return true;
     }
     template<class T> bool mValidElementType(const T &container) {
-        if (std::find(mValidContainerElementTypes.begin(), mValidContainerElementTypes.end(), 
+        if (std::find(mValidContainerElementTypes.begin(), mValidContainerElementTypes.end(),
                       typeid(*container.begin())) != mValidContainerElementTypes.end()) {
             return true;
         }
-        std::cerr << "[ERROR][DataWriter] - Given container has invalid element type! \n";
+        std::cerr << "[ERROR]:[DataWriter] - Given container has invalid element type! \n";
         return false;
     }
+
 private:
     std::vector<std::type_index> mValidContainerElementTypes;
 };
- 
-} // fle_srtr namespace.
+
+} // file_sorter namespace.

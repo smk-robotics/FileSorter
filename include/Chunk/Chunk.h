@@ -8,7 +8,7 @@
 
 #include "DataWriter.h"
 
-namespace fle_srtr {
+namespace file_sorter {
 /**
  * @brief Chunk class.
  * @details Stores chunk filename and methods for create/delete chunk file with sorted data from any stl container.
@@ -18,18 +18,18 @@ class Chunk {
 public:
     /**
      * @brief Constructor for new Chunk object.
-     * @param[in] filename Name of chunk. Also use as filename for binary file with data from given container. 
+     * @param[in] filename Name of chunk. Also use as filename for binary file with data from given container.
      */
     Chunk(const std::string &filename);
     /**
      * @brief Constructor for new Chunk object.
      * @tparam TContainerType Type of container with data (vector, set, multiset, etc.).
      * @tparam TElementType Type of data elements in container (int, float, double, etc.).
-     * @param[in] filename Name of chunk. Also use as filename for binary file with data from given container. 
+     * @param[in] filename Name of chunk. Also use as filename for binary file with data from given container.
      * @param[in] data Container with data that will be stored in chunk binary file.
      */
-    template<template<class ...> class TContainerType, class TElementType> 
-    Chunk(const std::string &filename, const TContainerType<TElementType> &data) 
+    template<template<class ...> class TContainerType, class TElementType>
+    Chunk(const std::string &filename, const TContainerType<TElementType> &data)
     : mChunkFileName(filename) {
         writeDataToChunkFile(data);
     }
@@ -65,7 +65,7 @@ public:
      * @param data[in] Given data that will write to binary chunk file.
      * @return True in successfully write data to binary file. False if something gone wrong.
      */
-    template<template<class ...> class TContainerType, class TElementType> 
+    template<template<class ...> class TContainerType, class TElementType>
     bool writeDataToChunkFile([[maybe_unused]] const TContainerType<TElementType> &data) {
         return mDataWriter.writeDataToFile(mChunkFileName, data);
     }
@@ -75,4 +75,4 @@ protected:
     DataWriter mDataWriter;     /**< Object that write data from container to binary file. */
 };
 
-} // fle_srtr namespace.
+} // file_sorter namespace.
