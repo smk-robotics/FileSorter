@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.com/smk-robotics/FileSorter.svg?branch=develop)](https://travis-ci.com/github/smk-robotics/FileSorter)
 
 # FileSorter
-External sorting for huge binary files.
-____
+External sorting for binary files.
+
 
 ## Building library
   For separate library build just run:
@@ -11,7 +11,7 @@ ____
 
   `cmake --build . --target all`
 
-____
+
 ## Building library with tests
 
 1. Before build library with tests, build third-party gtest/gmock libraries first:
@@ -32,7 +32,6 @@ ____
 
     `export GTEST_COLOR=1 && ctest --output-on-failure`
 
-____
 
 ## License
 
