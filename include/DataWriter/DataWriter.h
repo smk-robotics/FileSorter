@@ -16,9 +16,10 @@ public:
         mValidContainerElementTypes.emplace_back(std::type_index(typeid(bool)));
         mValidContainerElementTypes.emplace_back(std::type_index(typeid(char)));
         mValidContainerElementTypes.emplace_back(std::type_index(typeid(double)));
-        mValidContainerElementTypes.emplace_back(std::type_index(typeid(float)));
         mValidContainerElementTypes.emplace_back(std::type_index(typeid(int)));
+        mValidContainerElementTypes.emplace_back(std::type_index(typeid(float)));
         mValidContainerElementTypes.emplace_back(std::type_index(typeid(std::string)));
+        mValidContainerElementTypes.emplace_back(std::type_index(typeid(uint32_t)));
     };
     ~DataWriter() = default;
     template<typename T> bool writeDataToFile(const std::string &filename, const std::vector<T> &data) {
@@ -53,8 +54,8 @@ private:
         return true;
     }
     template<class T> bool mValidElementType(const T &container) {
-        if (std::find(mValidContainerElementTypes.begin(), mValidContainerElementTypes.end(),
-                      typeid(*container.begin())) != mValidContainerElementTypes.end()) {
+        if (std::find(begin(mValidContainerElementTypes), end(mValidContainerElementTypes),
+                      std::type_index(typeid(*container.begin()))) != std::end(mValidContainerElementTypes)) {
             return true;
         }
         std::cerr << "[ERROR]:[DataWriter] - Given container has invalid element type! \n";

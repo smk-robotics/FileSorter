@@ -35,13 +35,25 @@ target_include_directories(DataProvider INTERFACE
 ######################
 ## SPLITTER_LIBRARY ##
 ######################
-add_library(FileSplitter INTERFACE)
+add_library(DataSplitter INTERFACE)
 
-target_include_directories(FileSplitter INTERFACE
-  include/FileSplitter
+target_include_directories(DataSplitter INTERFACE
+  include/DataSplitter
 )
 
-target_link_libraries(FileSplitter INTERFACE
+target_link_libraries(DataSplitter INTERFACE
+   Chunk
+)
+######################
+## MERGER_LIBRARY ##
+######################
+add_library(DataMerger INTERFACE)
+
+target_include_directories(DataMerger INTERFACE
+  include/DataMerger
+)
+
+target_link_libraries(DataMerger INTERFACE
    Chunk
 )
 ################
@@ -56,11 +68,10 @@ target_link_libraries(FileSplitter INTERFACE
 #    ${FILE_SPLITTER_LIBRARY}
 #    ${MULTISET_DATA_PROVIDER_LIBRARY}
 #)
-
 #############
 ## TESTS ##
 #############
-if (BUILD_TESTS) 
+if (BUILD_TESTS)
   enable_testing()
   add_subdirectory(test)
 endif()

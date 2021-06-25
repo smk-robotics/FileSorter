@@ -27,14 +27,14 @@ target_link_libraries(MultisetDataProviderTest
     ${GTEST_LIBRARIES}
 )
 
-add_executable(FileSplitterTest
-    FileSplitterTest.cpp
+add_executable(DataSplitterTest
+    DataSplitterTest.cpp
 )
 
-target_link_libraries(FileSplitterTest
+target_link_libraries(DataSplitterTest
     Chunk
     DataProvider
-    FileSplitter
+    DataSplitter
     ${GTEST_LIBRARIES}
 )
 
@@ -47,6 +47,15 @@ target_link_libraries(DataWriterTest
     ${GTEST_LIBRARIES}
 )
 
+add_executable(DataMergerTest
+    DataMergerTest.cpp
+)
+
+target_link_libraries(DataMergerTest
+    DataMerger
+    ${GTEST_LIBRARIES}
+)
+
 ################################
 ### TEST_DATA_FILE_GENERATOR ###
 ################################
@@ -55,7 +64,8 @@ add_executable(TestDataFileGenerator
   ../test-data/TestDataFileGenerator.h
 )
 
+gtest_discover_tests(ChunkTest)
+gtest_discover_tests(MultisetDataProviderTest)
 gtest_discover_tests(DataWriterTest)
-# gtest_discover_tests(MultisetChunkTest)
-# gtest_discover_tests(MultisetDataProviderTest)
-# gtest_discover_tests(FileSplitterTest)
+gtest_discover_tests(DataSplitterTest)
+gtest_discover_tests(DataMergerTest)

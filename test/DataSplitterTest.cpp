@@ -3,7 +3,7 @@
 
 using namespace file_sorter;
 
-class FileSplitterTest : public ::testing::Test {
+class DataSplitterTest : public ::testing::Test {
 public:
     void SetUp() {
         mTestDataFilename = __FILE__;
@@ -17,11 +17,11 @@ protected:
     std::string mTestDataFilename;
 };
 
-TEST_F(FileSplitterTest, BasicConstructorTest) {
+TEST_F(DataSplitterTest, BasicConstructorTest) {
     SingleThreadSizeSplitter<uint32_t> fileSplitter(1);
 }
 
-TEST_F(FileSplitterTest, SplitFileTo1MbTest) {
+TEST_F(DataSplitterTest, SplitFileTo1MbTest) {
     SingleThreadSizeSplitter<uint32_t> fileSplitter(2);
     std::vector<Chunk> chunks;
     EXPECT_NO_THROW(chunks = fileSplitter.splitFileToChunks(mTestDataFilename));
@@ -31,7 +31,7 @@ TEST_F(FileSplitterTest, SplitFileTo1MbTest) {
     }
 }
 
-TEST_F(FileSplitterTest, SplitFileTo6MbTest) {
+TEST_F(DataSplitterTest, SplitFileTo6MbTest) {
     SingleThreadSizeSplitter<uint32_t> fileSplitter(6);
     std::vector<Chunk> chunks;
     EXPECT_NO_THROW(chunks = fileSplitter.splitFileToChunks(mTestDataFilename));
