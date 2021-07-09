@@ -13,8 +13,12 @@ namespace file_sorter {
 
 class MergeSorter {
 public:
-    MergeSorter() = default;
+    MergeSorter()  = default;
     ~MergeSorter() = default;
+    template<template<class ...> class TContainer, class TChunk>
+    void merge(const TContainer<TChunk>& chunks) const;
+// private:
+//     MergeStrategy merger;
 };
 
 } // file_sorter namespace.
